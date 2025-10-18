@@ -6,11 +6,22 @@ DOCKER_TAG = "v.${BUILD_ID}.0" // we will tag our images with the current build 
 }
 agent any // Jenkins will be able to select all available agents
 stages {
+  stage('Test Docker'){
+    steps {
+      script {
+      sh '''
+      whoami
+      groups
+      docker ps
+      '''
+      }
+    }
+  }
   stage('Docker Build'){ // docker build image stage
     steps {
       script {
       sh '''
-        docker build -t $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG .
+      docker build -t $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG .
       sleep 6
       '''
       }
