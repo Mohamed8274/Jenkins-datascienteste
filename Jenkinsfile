@@ -11,7 +11,7 @@ stages {
       script {
       sh '''
       echo PATH=$PATH
-      which docker || echo "docker introuvable"'
+      which docker || echo "docker introuvable"
       '''
       }
     }
