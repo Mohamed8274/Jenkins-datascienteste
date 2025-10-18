@@ -6,13 +6,12 @@ DOCKER_TAG = "v.${BUILD_ID}.0" // we will tag our images with the current build 
 }
 agent any // Jenkins will be able to select all available agents
 stages {
-  stage('Test Docker'){
+  stage('Check PATH'){
     steps {
       script {
       sh '''
-      whoami
-      groups
-      docker ps
+      echo PATH=$PATH
+      which docker || echo "docker introuvable"'
       '''
       }
     }
